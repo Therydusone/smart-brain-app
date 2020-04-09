@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
@@ -24,7 +24,22 @@ const particlesOptions = {
     }
   }
 }
-function App() {
+class App extends Component {
+  constructor() {
+    super();
+    this.state= {
+      input: '',
+    }
+  }
+
+  onInputChange = (event) => {
+    console.log(event)
+  }
+
+  onSubmit= () => {
+    console.log('click')
+  }
+  render() {
   return (
     <div className="App">
     <Particles 
@@ -34,9 +49,8 @@ function App() {
     <Navigation />
     <Logo />
     <Rank />
-    <ImageLinkForm />
+    <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onSubmit}/>
     </div>
   );
-}
-
+}}
 export default App;
